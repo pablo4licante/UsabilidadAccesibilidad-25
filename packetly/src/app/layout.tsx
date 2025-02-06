@@ -39,8 +39,8 @@ export default function RootLayout({
       >
         <header className="flex justify-end items-center p-4 gap-4 h-16">
             <SignedOut>
-              <Button><SignInButton /></Button>
-              <Button><SignUpButton /></Button>
+              <SignInButton mode="modal"><Button>Sign In</Button></SignInButton>
+              <SignUpButton mode="modal"><Button>Sign Up</Button></SignUpButton>
             </SignedOut>
             <SignedIn>
               <UserButton />
