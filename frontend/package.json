@@ -1,0 +1,19 @@
+{
+  "name": "ua25-frontend",
+  "version": "1.0.0",
+  "description": "Frontend para webapp de Gestion de Assets para desarrollo de Videojuegos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablo4licante/UsabilidadAccesibilidad-25.git"
+  },
+  "author": "Pablo Alicante, Leyre Wollstein, Noelia Lopez, Antonio Ramirez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pablo4licante/UsabilidadAccesibilidad-25/issues"
+  },
+  "homepage": "https://github.com/pablo4licante/UsabilidadAccesibilidad-25#readme"
+}
