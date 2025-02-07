@@ -6,10 +6,13 @@ import {
   SignedIn,
   SignedOut,
   UserButton,
-} from '@clerk/nextjs'
+} from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Library, Package, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,22 +36,84 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <header className="flex justify-end items-center p-4 gap-4 h-16">
-            <SignedOut>
-              <SignInButton mode="modal"><Button>Sign In</Button></SignInButton>
-              <SignUpButton mode="modal"><Button>Sign Up</Button></SignUpButton>
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 pl-4 pr-4 mb-4">
+            <div className="w-full flex h-14 items-center justify-between">
+              {/* Left section with logo and navigation */}
+              <div className="flex items-center space-x-4">
+                <Link className="flex items-center space-x-2" href="/">
+                  <Package className="h-6 w-6" />
+                  <span className="hidden font-bold sm:inline-block">
+                    Packetly
+                  </span>
+                </Link>
+                <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+                  <a
+                    className="transition-colors hover:text-foreground/80 text-foreground/60"
+                    href="/assets"
+                  >
+                    Assets
+                  </a>
+                  <a
+                    className="transition-colors hover:text-foreground/80 text-foreground/60"
+                    href="/projects"
+                  >
+                    Projects
+                  </a>
+                  <a
+                    className="transition-colors hover:text-foreground/80 text-foreground/60"
+                    href="/team"
+                  >
+                    Team
+                  </a>
+                </nav>
+              </div>
+
+              {/* Middle section with search input */}
+              <div className="flex items-center w- justify-center space-x-2">
+                <div className="relative w-full max-w-xs md:max-w-md">
+                  <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Search assets..."
+                    className="pl-8 w-full"
+                  />
+                </div>
+              </div>
+
+              {/* Right section with upload button and user buttons */}
+              <div className="flex items-center space-x-4">
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <Button>Sign In</Button>
+                  </SignInButton>
+                  <SignUpButton mode="modal">
+                    <Button>Sign Up</Button>
+                  </SignUpButton>
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </div>
+            </div>
           </header>
-        {children}
-      </body>
-    </html>
+
+          {children}
+
+          <footer className="border-t pl-2 w-full pr-2">
+            <div className="w-full flex flex-col items-center justify-center gap-4 py-10 md:h-12 md:flex-row md:py-0">
+              <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
+                <Library className="h-6 w-6" />
+                <p className="text-center text-sm leading-loose md:text-left">
+                  Built by the Packetly team. All rights reserved.
+                </p>
+              </div>
+            </div>
+          </footer>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
