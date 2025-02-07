@@ -7,8 +7,7 @@ import {
   CuboidIcon as Cube,
   FileAudio,
   FileVideo,
-  FileCode,
-  Package,
+  FileCode
 } from "lucide-react"
 
 export default function Home() {
