@@ -9,8 +9,6 @@ import { OrbitControls } from '@react-three/drei';
 function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos: Vector3) => void }) {
   const objRef = useRef<any>(null);
 
-  console.log('Cargando objeto:', url);
-
   useEffect(() => {
     if (objRef.current) {
       // Obtener el bounding box del modelo
@@ -39,10 +37,12 @@ function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos:
 
   // Cargar el material .mtl
   const mtl = useLoader(MTLLoader, url.replace('.obj', '.mtl'));
+  console.log('Cargando material:', mtl);
 
   // Cargar el objeto .obj y aplicar los materiales cargados
   const obj = useLoader(OBJLoader, url, (loader) => {
-    mtl.preload();  // Pre-cargar los materiales
+    console.log('Cargando objeto:', url);
+    mtl.preload(); // Pre-cargar los materiales
     loader.setMaterials(mtl); // Aplicar los materiales al objeto
   });
 
@@ -59,7 +59,7 @@ function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos:
       });
     }
   }, [obj]);
-  console.log('DEBUG! --' + `${obj} ${objRef}`);
+
   return <primitive ref={objRef} object={obj} />;
 }
 
