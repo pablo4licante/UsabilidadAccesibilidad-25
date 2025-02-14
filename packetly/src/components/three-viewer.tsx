@@ -9,6 +9,8 @@ import { OrbitControls } from '@react-three/drei';
 function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos: Vector3) => void }) {
   const objRef = useRef<any>(null);
 
+  console.log('Cargando objeto:', url);
+
   useEffect(() => {
     if (objRef.current) {
       // Obtener el bounding box del modelo
@@ -57,7 +59,7 @@ function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos:
       });
     }
   }, [obj]);
-
+  console.log('DEBUG! --' + `${obj} ${objRef}`);
   return <primitive ref={objRef} object={obj} />;
 }
 
