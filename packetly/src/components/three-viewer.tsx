@@ -1,7 +1,7 @@
 'use client'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Canvas, useLoader } from '@react-three/fiber';
-import { OBJLoader, MTLLoader } from 'three-stdlib';
+import { OBJLoader } from 'three-stdlib';
 import { Box3, Vector3, MeshBasicMaterial } from 'three';
 import { useState, useRef, useEffect, Suspense } from 'react';
 import { OrbitControls } from '@react-three/drei';
@@ -35,23 +35,15 @@ function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos:
     }
   }, [url, onModelLoaded]);
 
-  // Cargar el material .mtl
-  const mtl = useLoader(MTLLoader, url.replace('.obj', '.mtl'));
-  console.log('Cargando material:', mtl);
-
-  // Cargar el objeto .obj y aplicar los materiales cargados
-  const obj = useLoader(OBJLoader, url, (loader) => {
-    console.log('Cargando objeto:', url);
-    mtl.preload(); // Pre-cargar los materiales
-    loader.setMaterials(mtl); // Aplicar los materiales al objeto
-  });
+  // Cargar el objeto .obj sin usar .mtl
+  const obj = useLoader(OBJLoader, url);
 
   // Asegurarnos de que el material se aplique correctamente
   useEffect(() => {
     if (objRef.current) {
       objRef.current.traverse((child: any) => {
         if (child.isMesh) {
-          // Si el material no está presente, aplicar un material básico
+          // Aplicar un material básico si no hay texturas
           if (!child.material) {
             child.material = new MeshBasicMaterial({ color: 0x555555 });
           }
