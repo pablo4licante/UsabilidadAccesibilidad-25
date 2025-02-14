@@ -1,3 +1,4 @@
+import ModelViewer from "@/components/three-viewer"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
@@ -108,6 +109,9 @@ export default function Home() {
               </div>
             </TabsContent>
           </Tabs>
+          <div className="w-[800px] h-[800px]">
+            <ModelViewer  modelUrl="/models/Kitchen.obj"></ModelViewer>
+          </div>
         </main>
       </div>
       
