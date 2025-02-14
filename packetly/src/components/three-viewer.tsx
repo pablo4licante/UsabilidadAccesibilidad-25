@@ -8,7 +8,7 @@ import { OrbitControls } from '@react-three/drei';
 
 function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos: Vector3) => void }) {
   const objRef = useRef<any>(null);
-
+  console.log(`Loading... ${url}`);
   useEffect(() => {
     if (objRef.current) {
       // Obtener el bounding box del modelo
@@ -37,6 +37,7 @@ function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos:
 
   // Cargar el objeto .obj sin usar .mtl
   const obj = useLoader(OBJLoader, url);
+  console.log(`${JSON.stringify(obj)}`);
 
   // Asegurarnos de que el material se aplique correctamente
   useEffect(() => {
