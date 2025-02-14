@@ -1,18 +1,13 @@
+'use client'
 /* eslint-disable @typescript-eslint/no-explicit-any */
-'use client';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { OBJLoader, MTLLoader } from 'three-stdlib';
-import { Box3, Vector3, MeshBasicMaterial, Object3D } from 'three';
+import { Box3, Vector3, MeshBasicMaterial } from 'three';
 import { useState, useRef, useEffect, Suspense } from 'react';
 import { OrbitControls } from '@react-three/drei';
 
-interface ModelProps {
-  url: string;
-  onModelLoaded: (cameraPos: Vector3) => void;
-}
-
-function Model({ url, onModelLoaded }: ModelProps) {
-  const objRef = useRef<Object3D | null>(null);
+function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos: Vector3) => void }) {
+  const objRef = useRef<any>(null);
 
   useEffect(() => {
     if (objRef.current) {
@@ -52,11 +47,11 @@ function Model({ url, onModelLoaded }: ModelProps) {
   // Asegurarnos de que el material se aplique correctamente
   useEffect(() => {
     if (objRef.current) {
-      objRef.current.traverse((child) => {
-        if ((child as any).isMesh) {
+      objRef.current.traverse((child: any) => {
+        if (child.isMesh) {
           // Si el material no está presente, aplicar un material básico
-          if (!(child as any).material) {
-            (child as any).material = new MeshBasicMaterial({ color: 0x555555 });
+          if (!child.material) {
+            child.material = new MeshBasicMaterial({ color: 0x555555 });
           }
         }
       });
@@ -74,7 +69,7 @@ export default function ModelViewer({ modelUrl }: ModelViewerProps) {
   const [cameraPosition, setCameraPosition] = useState(new Vector3(-Math.cos(Math.PI / 4) * 5, 2, Math.sin(Math.PI / 4) * 5));
 
   return (
-    <Canvas
+    <Canvas 
       style={{ width: '100%', height: '100%', background: 'transparent' }}
       camera={{ position: cameraPosition.toArray(), fov: 90 }} // Convertimos a arreglo cuando lo pasamos a la cámara
       gl={{ alpha: true }}
