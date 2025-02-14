@@ -19,7 +19,7 @@ function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos:
       box.getSize(size);
 
       // Calcular la distancia necesaria para la cámara
-      const distance = size.length() * 1.5; // Factor de distancia según el tamaño del modelo
+      const distance = size.length(); // Factor de distancia según el tamaño del modelo
 
       // Llamar a la función `onModelLoaded` con la nueva posición de la cámara (Vector3)
       onModelLoaded(new Vector3(0, 0, distance));
@@ -30,14 +30,14 @@ function Model({ url, onModelLoaded }: { url: string, onModelLoaded: (cameraPos:
       objRef.current.position.sub(center);
 
       // Escalar el modelo para asegurarnos de que se ajuste bien a la vista
-      const scaleFactor = 0.04; // Ajusta este valor para que el modelo se vea más pequeño
+      const scaleFactor = 1; // Ajusta este valor para que el modelo se vea más pequeño
       objRef.current.scale.set(scaleFactor, scaleFactor, scaleFactor);
     }
   }, [url, onModelLoaded]);
 
   // Cargar el objeto .obj sin usar .mtl
   const obj = useLoader(OBJLoader, url);
-  console.log(`${JSON.stringify(obj)}`);
+  console.log(`${JSON.stringify}`)
 
   // Asegurarnos de que el material se aplique correctamente
   useEffect(() => {
