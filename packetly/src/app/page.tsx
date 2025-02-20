@@ -109,8 +109,8 @@ export default function Home() {
               </div>
             </TabsContent>
           </Tabs>
-          <div className="w-[800px] h-[800px]">
-            <ModelViewer  modelUrl="/models/Kitchen.obj"></ModelViewer>
+          <div className="w-[800px] h-[800px] absolute">
+            <ModelViewer  modelUrl="/models/scene.gltf"></ModelViewer>
           </div>
         </main>
       </div>
