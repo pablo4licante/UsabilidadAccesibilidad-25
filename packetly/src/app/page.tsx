@@ -110,7 +110,7 @@ export default function Home() {
             </TabsContent>
           </Tabs>
           <div className="w-[800px] h-[800px] absolute">
-            <ModelViewer  modelUrl="/models/robot-walk-animation/scene.gltf"></ModelViewer>
+            <ModelViewer  modelUrl="/models/robot_walk_animation/scene.gltf"></ModelViewer>
           </div>
         </main>
       </div>
