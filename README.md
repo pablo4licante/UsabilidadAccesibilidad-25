@@ -2,30 +2,3 @@
 
 [Packetly.space](https://packetly.space)
 
-## Frontend
-
-Se encuentra dentro de la carpeta `/packetly`
-
-Para hacer uso del frontend (hacer modificaciones, correr el servidor front en local...)
-
-```bash
-cd packetly
-
-# Para instalar dependencias de node
-npm i
-
-# Para correr el front en local
-npm run dev
-
-# Para el registro, hay que instalar dependencias en `/backend`
-cd backend
-npm install express mongoose bcryptjs cors dotenv
-npm install -D @types/express @types/bcryptjs @types/cors
-
-# Para el login, se instalan estas dependecias, también en `/backend`
-npm install jsonwebtoken
-npm install -D @types/jsonwebtoken
-
-# Por si fuera necesario, anoto que en `/packetly`, he tenido que hacer este comando:
-npm install react-router-dom
-```
