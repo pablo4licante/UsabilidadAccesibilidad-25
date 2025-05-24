@@ -1,0 +1,51 @@
+{
+  "name": "ua25-backend",
+  "version": "1.0.0",
+  "description": "Backend para WebApp de gestion de Assets para desarrollo de Videojuegos",
+  "homepage": "https://github.com/pablo4licante/UsabilidadAccesibilidad-25#readme",
+  "bugs": {
+    "url": "https://github.com/pablo4licante/UsabilidadAccesibilidad-25/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablo4licante/UsabilidadAccesibilidad-25.git"
+  },
+  "license": "MIT",
+  "author": "Pablo Alicante, Leyre Wollstein, Noelia Lopez, Antonio Ramirez",
+  "type": "commonjs",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.ts --watch src",
+    "test": "jest --runInBand",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.14.1",
+    "multer": "^1.4.5-lts.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.8",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/multer": "^1.4.12",
+    "@types/node": "^22.13.10",
+    "@types/supertest": "^6.0.3",
+    "jest": "^29.0.0",
+    "mongodb-memory-server-core": "^8.12.1",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.3.2",
+    "typescript": "^5.8.2"
+  }
+}
